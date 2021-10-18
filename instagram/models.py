@@ -46,5 +46,5 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
     
-
+    
 
