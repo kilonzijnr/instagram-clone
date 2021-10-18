@@ -33,6 +33,18 @@ class Image(models.Model):
     likes = models.ForeignKey(Likes, on_delete=CASCADE, default=None)
     comments = models.CharField(max_length= 120)
     post_time = models.DateTimeField(auto_now_add= True)
+
+    class Meta:
+        ordering = ['-post_time']
+
+    def __str__(self):
+        return self.name
+
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
     
 
 
