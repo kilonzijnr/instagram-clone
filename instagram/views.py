@@ -17,6 +17,6 @@ def homepage(request):
         posts = Image.get_images(users)
         alt_profiles = Profile.objects.all()
 
-        return render(request,)
+        return render(request,'insta/index.html',{"posts":posts,'profiles':alt_profiles})
     else:
         return redirect('login')
