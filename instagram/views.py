@@ -6,5 +6,17 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+from .forms import UpdateProfileForm,CreatePostForm
+
 # Create your views here.
 
+def homepage(request):
+    """Method to render the HomePage"""
+    if request.user.is_authenticated:
+        users = Profile.get_following(request.user)
+        posts = Image.get_images(users)
+        alt_profiles = Profile.objects.all()
+
+        return render(request,)
+    else:
+        return redirect('login')
