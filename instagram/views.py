@@ -50,3 +50,18 @@ def update_profile(request):
         form = UpdateProfileForm(instance=request.user.profile)
         return render(request,'insta/update.html',{"form":form})
 
+
+def post(request,user):
+    """Method to handle new post"""
+    post = Image(user == request.user)
+    if request.method == 'POST':
+        form = CreatePostForm(request.POST,request.FILES,instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'You have succesfully created your post!')
+        return redirect('home')
+    else:
+        form = CreatePostForm(instance=post)
+        return render(request,'insta/add_post.html',{'form':form})
+
+
