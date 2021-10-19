@@ -78,3 +78,11 @@ def search_profile(request):
     else:
         messages.success(request,"Kindly make an input to complete your search!")
         return HttpResponseRedirect(reverse('home'))
+
+
+def FollowView(request,pk):
+    """Method to handle profile follow"""
+    profile = get_object_or_404(Profile, pk = request.POST['profile_pk'])
+    profile.followers.add(request.user)
+    pk = profile.user.pk
+    return HttpResponseRedirect(reverse('profile', args=[str(pk)]))
