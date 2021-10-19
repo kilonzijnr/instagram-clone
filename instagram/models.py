@@ -1,16 +1,16 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
 class Profile(models.Model):
     """Model for handling User Profile"""
-
     user = models.OneToOneField(User, on_delete= models.CASCADE)
     username = models.CharField(max_length = 25)
     signup_date = models.DateTimeField(auto_now_add= True)
-    profile_photo = models.ImageField()
+    profile_photo = CloudinaryField('images')
     followers = models.ManyToManyField(User, related_name='followers', blank= True)
     bio = models.CharField(max_length= 70)
 
@@ -74,7 +74,7 @@ class Likes(models.Model):
 class Image(models.Model):
     """Model for handling Image posts by users"""
     user = models.ForeignKey(User,on_delete= models.CASCADE)
-    image = models.ImageField()
+    image = CloudinaryField('images')
     image_name = models.CharField(max_length= 25)
     caption = models.CharField(max_length= 100)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default= None)
