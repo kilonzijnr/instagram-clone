@@ -41,7 +41,7 @@ This application has being a personal undertaken project from scratch therefore 
 If you want to contact me you can reach me through vkilonzi05@gmail.com.
 
 # License
-This project uses an [MIT] License:(https://github.com/kilonzijnr/instagram-clone/blob/master/License).
+This project uses an [MIT]: [License](https://github.com/kilonzijnr/instagram-clone/blob/master/License)
 
 # Copyright 
 Victor Kilonzi (c) 2021.
