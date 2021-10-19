@@ -20,3 +20,21 @@ def homepage(request):
         return render(request,'insta/index.html',{"posts":posts,'profiles':alt_profiles})
     else:
         return redirect('login')
+
+def user_profile(request,pk):
+    """Method to manage the User Profile"""
+    user = User.objects.get(pk=pk)
+    try:
+        profile = Profile.objects.get(user=user)
+        followers = profile.total_followers()
+        posts = Image.objects.filter(user = user)
+        return render(request,'insta/profile.html',{"profile":profile,"posts":posts,"followers":followers})
+
+    except Exception as e:
+        print(e)
+        messages.success(request,'Kindly set up your profile!')
+        return redirect('update_profile')
+
+def update_profile(request):
+    """Method to handle data update in User Profile"""
+    
