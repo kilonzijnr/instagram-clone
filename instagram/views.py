@@ -65,3 +65,16 @@ def post(request,user):
         return render(request,'insta/add_post.html',{'form':form})
 
 
+def search_profile(request):
+    """Method that will display search results"""
+    if 'search_term' in request.GET and request.GET['search_term']:
+        try:
+            search_term = request.GET['search_term']
+            profiles = Profile.search_profile(search_term)
+            return render(request,"insta/search.html",{'profiles':profiles,"term":search_term})
+        except Exception as e:
+            print(e)
+            
+    else:
+        messages.success(request,"Kindly make an input to complete your search!")
+        return HttpResponseRedirect(reverse('home'))
