@@ -7,9 +7,9 @@ With the Instagram clone, A useer is able to sign up and get their own Profile,u
 # Prerequisites
 Before you begin, ensure you have met the following requirements:
 
--You have installed the latest version of [Django(python)]
--You have a Linux machine. For only web accesibility,the application is able to work properly on any operating system .
--You have read the projects REAME.md Documentation.
+- You have installed the latest version of [Django(python)]
+- You have a Linux machine. For only web accesibility,the application is able to work properly on any operating system .
+- You have read the projects REAME.md Documentation.
 
  # Installation Requirements
 - python3.8
@@ -27,12 +27,12 @@ Before you begin, ensure you have met the following requirements:
 
 To contribute to Instagram Clone follow these steps:
 
--Fork this repository.
--Create a branch: git checkout -b <ft-comments>.
--Make your changes and commit them: git commit -m '<commit_message>'
--Push to the original branch: git push origin <ft-comment>
--Create the pull request.
--Alternatively see the GitHub documentation on creating a pull request.
+- Fork this repository.
+- Create a branch: git checkout -b <ft-comments>.
+- Make your changes and commit them: git commit -m '<commit_message>'
+- Push to the original branch: git push origin <ft-comment>
+- Create the pull request.
+- Alternatively see the GitHub documentation on creating a pull request.
 
 # Contributors
 This application has being a personal undertaken project from scratch therefore having no secondary contributers for the curent version.
@@ -40,7 +40,7 @@ This application has being a personal undertaken project from scratch therefore 
 # Contact
 If you want to contact me you can reach me through vkilonzi05@gmail.com.
 
-# License# Prerequisites
+# License
 This project uses an [MIT] License:(https://github.com/kilonzijnr/instagram-clone/blob/master/License).
 
 # Copyright 
