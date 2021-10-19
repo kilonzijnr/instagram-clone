@@ -37,4 +37,16 @@ def user_profile(request,pk):
 
 def update_profile(request):
     """Method to handle data update in User Profile"""
-    
+    if request.method == 'POST':
+        form =  UpdateProfileForm(request.POST,request.FILES,instance=request.user.profile)
+        if form.is_bound():
+            form.save()
+            return redirect('profile',request.user.pk)
+        else:
+            messages.success(request,'We are having prblems with your profile form')
+            return render(request,'insta/update_profile.html',{"form":form})
+
+    else:
+        form = UpdateProfileForm(instance=request.user.profile)
+        return render(request,'insta/update.html',{"form":form})
+
