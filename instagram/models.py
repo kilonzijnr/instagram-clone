@@ -66,9 +66,6 @@ class Profile(models.Model):
 
         return profiles
 
-
-
-
 class Likes(models.Model):
     """Model for handling Image likes"""
 
@@ -76,26 +73,64 @@ class Likes(models.Model):
 
 class Image(models.Model):
     """Model for handling Image posts by users"""
-
+    user = models.ForeignKey(User,on_delete= models.CASCADE)
     image = models.ImageField()
-    name = models.CharField(max_length= 25)
+    image_name = models.CharField(max_length= 25)
     caption = models.CharField(max_length= 100)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default= None)
     likes = models.ForeignKey(Likes, on_delete=CASCADE, default=None)
     comments = models.CharField(max_length= 120)
-    post_time = models.DateTimeField(auto_now_add= True)
-
-    class Meta:
-        ordering = ['-post_time']
+    time_posted = models.DateTimeField(auto_now_add= True)
 
     def __str__(self):
         return self.name
 
     def save_image(self):
+        """Method to save Image to Database"""
         self.save()
 
     def delete_image(self):
+        """Method to delete Image """
         self.delete()
+
+    def like_image(self,user):
+        """Method to add user as an image liker"""
+        self.likes.add(user)
+
+    def get_total_likes(self):
+        """Method to get the total number of likess on an Image"""
+        return self.likes.count()
+
+    def update_caption(self,caption):
+        """Method to updat eimage captions in database"""
+        self.caption = caption
+        self.save()
+
+    @classmethod
+    def get_images(cls,users):
+        """Method to get a specific image"""
+        posts = []
+        for user in users:
+            images = Image.objects.filter(user = user)
+            for image in images:
+                posts.append(image)
+
+        return posts
+
+    def get_comments(self):
+        """Method to get all comments related to a post"""
+        comments = Comments.objects.filter(image = self)
+        return comments
+
+class Comments(models.Model):
+    """Method to define attributes of a comment"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image,on_delete=models.CASCADE)
+    comment = models.TextField()
+
+    def __str__(self):
+        return self.comment
+
     
     
 
