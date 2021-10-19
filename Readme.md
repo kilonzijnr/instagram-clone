@@ -40,7 +40,7 @@ This application has being a personal undertaken project from scratch therefore 
 # Contact
 If you want to contact me you can reach me through vkilonzi05@gmail.com.
 
-# License# Prerequisites
+# License
 This project uses an [MIT] License:(https://github.com/kilonzijnr/instagram-clone/blob/master/License).
 
 # Copyright 
