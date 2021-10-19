@@ -86,3 +86,9 @@ def FollowView(request,pk):
     profile.followers.add(request.user)
     pk = profile.user.pk
     return HttpResponseRedirect(reverse('profile', args=[str(pk)]))
+
+
+def view_image(request,pk):
+    """Method to display image details"""
+    post = get_object_or_404(Image,pk = pk)
+    return render(request,'insta/image.html',{"post":post})
