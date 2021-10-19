@@ -92,3 +92,11 @@ def view_image(request,pk):
     """Method to display image details"""
     post = get_object_or_404(Image,pk = pk)
     return render(request,'insta/image.html',{"post":post})
+
+
+def comment(request,pk):
+    """Method to handle post commenting"""
+    post = get_object_or_404(Image,pk=pk)
+    comment = Comments(user = request.user,image = post,comment = request.POST['comment'])
+    comment.save()
+    return HttpResponseRedirect(reverse('home'))
