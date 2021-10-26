@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 # Create your models here.
-
 class Profile(models.Model):
     """Model for handling User Profile"""
     user = models.OneToOneField(User, on_delete= models.CASCADE)
@@ -49,19 +48,11 @@ class Profile(models.Model):
         for profile in following:
             user = User.objects.get(profile = profile)
             users.append(user)
-
         return users
 
     @classmethod 
     def search_profile(cls,search_term):
-        """Method to return profiles with a provided search term
-        
-        Args:
-            search_term([type]): [description]
-
-        Returns:
-            [type]: [description]
-        """
+        """Method to return profiles with a provided search term"""
         profiles = cls.objects.filter(username_icontains = search_term)
 
         return profiles
@@ -79,7 +70,7 @@ class Image(models.Model):
     caption = models.CharField(max_length= 100)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, default= None)
     likes = models.ForeignKey(Likes, on_delete=CASCADE, default=None)
-    comments = models.CharField(max_length= 120)
+    comment = models.CharField(max_length= 120)
     time_posted = models.DateTimeField(auto_now_add= True)
 
     def __str__(self):
@@ -130,7 +121,3 @@ class Comments(models.Model):
 
     def __str__(self):
         return self.comment
-
-    
-    
-
